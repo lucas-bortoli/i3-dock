@@ -1,17 +1,16 @@
-import { useState } from "react";
 import classNames from "classnames";
-import { windowManager } from "@renderer/providers/WindowManagerProvider";
+import { windowManager } from "@renderer/providers/windowManager/WindowManagerProvider";
 
 const WorkspaceSwitcher = () => {
-  const [currentWorkspace] = useState(1);
-  const [workspace] = windowManager.useWorkspaceSwitch();
+  const [currentWorkspace, setCurrentWorkspace] = windowManager.useWorkspaceSwitch();
 
   return (
     <ul className="workspaceSwitcher">
-      {[1, 2, 3, 4, 5].map(workspace => (
+      {["1", "2", "3", "4", "5"].map(workspace => (
         <li
           key={workspace}
-          className={classNames("workspace", { current: currentWorkspace === workspace })}>
+          className={classNames("workspace", { current: currentWorkspace === workspace })}
+          onClick={() => setCurrentWorkspace(workspace)}>
           {workspace}
         </li>
       ))}
