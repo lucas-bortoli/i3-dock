@@ -1,8 +1,10 @@
 import { useState } from "react";
 import classNames from "classnames";
+import { windowManager } from "@renderer/providers/WindowManagerProvider";
 
 const WorkspaceSwitcher = () => {
   const [currentWorkspace] = useState(1);
+  const [workspace] = windowManager.useWorkspaceSwitch();
 
   return (
     <ul className="workspaceSwitcher">
