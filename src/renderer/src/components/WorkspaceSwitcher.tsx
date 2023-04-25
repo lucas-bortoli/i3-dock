@@ -1,17 +1,28 @@
 import classNames from "classnames";
 import { windowManager } from "@renderer/providers/windowManager/WindowManagerProvider";
+import "material-icons";
+
+const workspaces: { name: string; displayName?: string; icon?: string }[] = [
+  { name: "1", icon: "travel_explore", displayName: "Web" },
+  { name: "2", icon: "code", displayName: "Dev" },
+  { name: "3", icon: "terminal", displayName: "Terminal" },
+  { name: "999", icon: "tag", displayName: "Scratchpad" },
+];
 
 const WorkspaceSwitcher = () => {
   const [currentWorkspace, setCurrentWorkspace] = windowManager.useWorkspaceSwitch();
 
   return (
     <ul className="workspaceSwitcher">
-      {["1", "2", "3", "4", "5", "6"].map(workspace => (
+      {workspaces.map(workspace => (
         <li
-          key={workspace}
-          className={classNames("workspace", { current: currentWorkspace === workspace })}
-          onClick={() => setCurrentWorkspace(workspace)}>
-          {workspace}
+          key={workspace.name}
+          className={classNames("workspace", { current: currentWorkspace === workspace.name })}
+          onClick={() => setCurrentWorkspace(workspace.name)}>
+          {workspace.icon && (
+            <span className={classNames("material-icons", "icon")}>{workspace.icon}</span>
+          )}
+          {workspace.displayName ?? workspace.name}
         </li>
       ))}
     </ul>
