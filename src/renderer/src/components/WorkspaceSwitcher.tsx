@@ -6,7 +6,7 @@ const WorkspaceSwitcher = () => {
 
   return (
     <ul className="workspaceSwitcher">
-      {["1", "2", "3", "4", "5"].map(workspace => (
+      {["1", "2", "3", "4", "5", "6"].map(workspace => (
         <li
           key={workspace}
           className={classNames("workspace", { current: currentWorkspace === workspace })}
