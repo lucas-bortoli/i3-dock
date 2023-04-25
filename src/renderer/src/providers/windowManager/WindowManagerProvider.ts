@@ -21,6 +21,7 @@ class WindowManager {
   sendCommand(command: string) {
     api.sendWmCommand(command);
   }
+  c;
 
   /**
    * Envia um comando ao i3 referente à janela da dock. Todas as operações serão aplicadas a essa janela.
