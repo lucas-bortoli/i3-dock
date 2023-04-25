@@ -2,6 +2,8 @@ import { contextBridge, ipcRenderer } from "electron";
 
 const api = {
   sendWmCommand: (command: string) => ipcRenderer.send("wm-command", command),
+  spawnProcess: (command: string, argv: string[]) =>
+    ipcRenderer.send("spawn-command", command, argv),
 };
 
 const relayIpcEvent = eventName => {

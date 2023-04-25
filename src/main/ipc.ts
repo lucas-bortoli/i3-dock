@@ -1,3 +1,4 @@
+import { spawn } from "child_process";
 import { app, ipcMain, webContents } from "electron";
 import i3 from "i3";
 
@@ -11,6 +12,10 @@ app.whenReady().then(() => {
 
   ipcMain.on("wm-command", (event, command: string) => {
     client.command(command);
+  });
+
+  ipcMain.on("spawn-command", (_, command: string, args: string[]) => {
+    spawn(command, args);
   });
 
   client.on("workspace", data => {

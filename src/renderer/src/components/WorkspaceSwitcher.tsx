@@ -6,7 +6,7 @@ const workspaces: { name: string; displayName?: string; icon?: string }[] = [
   { name: "1", icon: "travel_explore", displayName: "Web" },
   { name: "2", icon: "code", displayName: "Dev" },
   { name: "3", icon: "terminal", displayName: "Terminal" },
-  { name: "999", icon: "tag", displayName: "Scratchpad" },
+  { name: "4", icon: "tag", displayName: "Scratchpad" },
 ];
 
 const WorkspaceSwitcher = () => {
@@ -15,7 +15,7 @@ const WorkspaceSwitcher = () => {
   return (
     <ul className="workspaceSwitcher">
       {workspaces.map(workspace => (
-        <li
+        <button
           key={workspace.name}
           className={classNames("workspace", { current: currentWorkspace === workspace.name })}
           onClick={() => setCurrentWorkspace(workspace.name)}>
@@ -23,7 +23,7 @@ const WorkspaceSwitcher = () => {
             <span className={classNames("material-icons", "icon")}>{workspace.icon}</span>
           )}
           {workspace.displayName ?? workspace.name}
-        </li>
+        </button>
       ))}
     </ul>
   );

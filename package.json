@@ -24,7 +24,8 @@
     "@electron-toolkit/utils": "^1.0.2",
     "classnames": "^2.3.2",
     "i3": "^0.3.0",
-    "material-icons": "^1.13.5"
+    "material-icons": "^1.13.5",
+    "mpris-service": "^2.1.2"
   },
   "devDependencies": {
     "@electron-toolkit/tsconfig": "^1.0.1",

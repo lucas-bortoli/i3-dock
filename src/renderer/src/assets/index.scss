@@ -9,6 +9,8 @@ body {
   padding: 0;
   margin: 0;
   user-select: none;
+  outline: none;
+  box-sizing: border-box;
 }
 
 @mixin flex($dir) {
@@ -17,7 +19,7 @@ body {
 }
 
 :root {
-  --panel-bg: rgba(0, 0, 0, 0.75);
+  --panel-bg: rgba(255, 255, 255, 0.45);
   --item-hover-bg: rgba(255, 255, 255, 0.05);
   --item-active-bg: rgba(255, 255, 255, 0.1);
   --text: #ccc;
@@ -29,6 +31,46 @@ body {
 .taskbar {
   @include flex($dir: row);
 
+  align-items: center;
+  filter: invert(1);
+
+  button {
+    @include flex($dir: row);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: inherit;
+    font-size: 16px;
+    background-color: transparent;
+    color: var(--text);
+    padding: 0 16px;
+    height: 50px;
+    border: 0;
+
+    &:hover {
+      box-shadow: inset 0px 0px 0px 1px rgba(255, 255, 255, 0.1);
+      background-color: var(--item-hover-bg);
+    }
+
+    &:active {
+      background-color: var(--item-active-bg);
+    }
+
+    &:focus {
+      box-shadow: inset 0px 0px 0px 2px rgba(255, 255, 255, 0.1);
+    }
+
+    .icon {
+      font-size: 20px;
+      margin-right: 16px;
+    }
+
+    .icon.icon-only {
+      margin-right: 0;
+    }
+  }
+
   .workspaceSwitcher {
     @include flex($dir: row);
 
@@ -38,25 +80,28 @@ body {
       @include flex($dir: row);
       align-items: center;
       justify-content: center;
+
       padding: 0 16px;
       min-width: 50px;
-      height: 50px;
-
-      &:hover {
-        background-color: var(--item-hover-bg);
-      }
-
-      &:active {
-        background-color: var(--item-active-bg);
-      }
 
       &.current {
         background-color: var(--item-active-bg);
       }
+    }
+  }
+
+  .shellCommandBar {
+    @include flex($dir: row);
+  }
+
+  .mediaPlayer {
+    @include flex($dir: row);
+
+    .playPause {
+      padding: 0;
 
       .icon {
-        font-size: 20px;
-        margin-right: 16px;
+        font-size: 32px;
       }
     }
   }
@@ -67,6 +112,22 @@ body {
     justify-content: center;
     padding: 0 1em;
     height: 50px;
+  }
+
+  .separator {
+    opacity: 0;
+
+    &.marginLeft {
+      margin-left: 16px;
+    }
+
+    &.marginRight {
+      margin-right: 16px;
+    }
+
+    &.visible {
+      opacity: 1;
+    }
   }
 
   .spacer {
