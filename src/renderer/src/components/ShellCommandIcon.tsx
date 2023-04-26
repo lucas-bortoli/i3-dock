@@ -27,7 +27,7 @@ const ShellCommandIcon = (props: Props) => {
   };
 
   return (
-    <button onClick={launch}>
+    <button onClick={launch} title={props.tooltip}>
       <span className={classNames("material-icons", "icon", "icon-only")}>{props.icon}</span>
     </button>
   );

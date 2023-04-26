@@ -22,6 +22,7 @@
   "dependencies": {
     "@electron-toolkit/preload": "^1.0.3",
     "@electron-toolkit/utils": "^1.0.2",
+    "child-process-promise": "^2.2.1",
     "classnames": "^2.3.2",
     "i3": "^0.3.0",
     "material-icons": "^1.13.5",
@@ -31,6 +32,7 @@
     "@electron-toolkit/tsconfig": "^1.0.1",
     "@electron/notarize": "^1.2.3",
     "@esbuild-plugins/node-modules-polyfill": "^0.2.2",
+    "@types/child-process-promise": "^2.2.2",
     "@types/node": "16.18.21",
     "@types/react": "18.0.30",
     "@types/react-dom": "18.0.11",

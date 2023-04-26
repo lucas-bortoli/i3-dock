@@ -1,5 +1,6 @@
 import { spawn } from "child_process";
 import { app, ipcMain, webContents } from "electron";
+import { spawn as spawnPromise } from "child-process-promise";
 import i3 from "i3";
 
 interface i3Client {
@@ -16,6 +17,12 @@ app.whenReady().then(() => {
 
   ipcMain.on("spawn-command", (_, command: string, args: string[]) => {
     spawn(command, args);
+  });
+
+  ipcMain.handle("exec-command-with-output", async (event, command: string, args: string[]) => {
+    const result = await spawnPromise(command, args, { capture: ["stdout"] });
+
+    return result.stdout;
   });
 
   client.on("workspace", data => {

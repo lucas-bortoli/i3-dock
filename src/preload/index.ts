@@ -4,6 +4,8 @@ const api = {
   sendWmCommand: (command: string) => ipcRenderer.send("wm-command", command),
   spawnProcess: (command: string, argv: string[]) =>
     ipcRenderer.send("spawn-command", command, argv),
+  spawnProcessAndGetOutput: (command: string, argv: string[]): Promise<string> =>
+    ipcRenderer.invoke("exec-command-with-output", command, argv),
 };
 
 const relayIpcEvent = eventName => {
